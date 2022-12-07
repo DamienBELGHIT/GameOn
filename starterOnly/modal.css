@@ -227,6 +227,11 @@ input {
   border: 2px solid #e54858;
 }
 
+.formResult{
+  display: none;
+  color: green;
+}
+
 input[data-error]::after {
     content: attr(data-error);
     font-size: 0.4em;

@@ -13,6 +13,7 @@ const submitForm = document.querySelector(".btn-submit");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelectorAll(".close");
+const formResult = document.querySelector(".formResult");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -35,9 +36,13 @@ formData.forEach((div)=> div.querySelector("input").addEventListener("input", (v
 
 //submit form event : check all inputs validity before sending
 submitForm.addEventListener("click", (event)=>{
+  event.preventDefault();
   valid = true;
   formData.forEach((div)=> !checkInput(div.querySelector("input")) && (valid=false));
-  !valid && event.preventDefault();
+  if(valid){
+    formResult.style.display = "block"; 
+    closeModal();
+  } 
 });
 
 //check if an input is valid and shows its data error if not valid
