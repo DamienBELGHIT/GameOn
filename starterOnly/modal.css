@@ -229,7 +229,8 @@ input {
 
 .formResult{
   display: none;
-  color: green;
+  text-align: center;
+  font-size: 2em;
 }
 
 input[data-error]::after {
@@ -327,6 +328,7 @@ input[data-error]::after {
   transform: rotate(-45deg);
 }
 .btn-submit,
+.btn-closeForm,
 .btn-signup {
   background: #fe142f;
   display: block;
@@ -467,6 +469,7 @@ input[data-error]::after {
   height: 100%;
   display: block;
   padding: 0;
+  object-fit: cover;
 }
 .copyrights {
   color: #fe142f;

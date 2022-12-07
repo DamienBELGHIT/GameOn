@@ -12,8 +12,8 @@ const modalbg = document.querySelector(".bground");
 const submitForm = document.querySelector(".btn-submit");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const modalClose = document.querySelectorAll(".close");
-const formResult = document.querySelector(".formResult");
+const modalClose = document.querySelectorAll(".closeForm");
+const modal = document.querySelector(".modal-body");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -40,8 +40,8 @@ submitForm.addEventListener("click", (event)=>{
   valid = true;
   formData.forEach((div)=> !checkInput(div.querySelector("input")) && (valid=false));
   if(valid){
-    formResult.style.display = "block"; 
-    closeModal();
+    modal.querySelector("form").style.display = "none";
+    modal.querySelector(".formResult").style.display = "block";
   } 
 });
 
