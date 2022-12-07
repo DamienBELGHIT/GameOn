@@ -38,7 +38,6 @@ submitForm.addEventListener("click", (event)=>{
   valid = true;
   formData.forEach((div)=> !checkInput(div.querySelector("input")) && (valid=false));
   !valid && event.preventDefault();
-  console.log(valid);
 });
 
 //check if an input is valid and shows its data error if not valid
