@@ -9,6 +9,7 @@ function editNav() {
 
 // DOM Elements
 const modalbg = document.querySelector(".bground");
+const submitForm = document.querySelector(".btn-submit");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const modalClose = document.querySelectorAll(".close");
@@ -27,4 +28,27 @@ modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
 //close modal form
 function closeModal(){
   modalbg.style.display = "none";
+}
+
+//form inputs events
+formData.forEach((div)=> div.querySelector("input").addEventListener("input", (val)=>checkInput(val.target)));
+
+//submit form event : check all inputs validity before sending
+submitForm.addEventListener("click", (event)=>{
+  valid = true;
+  formData.forEach((div)=> !checkInput(div.querySelector("input")) && (valid=false));
+  !valid && event.preventDefault();
+  console.log(valid);
+});
+
+//check if an input is valid and shows its data error if not valid
+function checkInput(input){
+  div = input.parentElement;
+  if(input.validity.valid){
+    div.setAttribute("data-error-visible", false);
+    return true;
+  }else{
+    div.setAttribute("data-error-visible", true);
+    return false;
+  }
 }
