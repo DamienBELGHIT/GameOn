@@ -23,23 +23,23 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-// close modal event
+//event to close modal
 modalClose.forEach((btn) => btn.addEventListener("click", closeModal));
 
-//close modal form
+//close modal
 function closeModal(){
   modalbg.style.display = "none";
 }
 
-//form inputs events
+//events to check validity of form inputs
 formData.forEach((div)=> div.querySelector("input").addEventListener("input", (val)=>checkInput(val.target)));
 
-//submit form event : check all inputs validity before sending
+//event to submit form : check all inputs validity before sending
 submitForm.addEventListener("click", (event)=>{
   event.preventDefault();
-  valid = true;
-  formData.forEach((div)=> !checkInput(div.querySelector("input")) && (valid=false));
-  if(valid){
+  let formValid = true;
+  formData.forEach((div)=> !checkInput(div.querySelector("input")) && (formValid=false));
+  if(formValid){
     modal.querySelector("form").style.display = "none";
     modal.querySelector(".formResult").style.display = "block";
   } 
