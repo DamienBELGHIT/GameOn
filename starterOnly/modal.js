@@ -35,7 +35,7 @@ function closeModal(){
   resetForm(modal.querySelector("form"));
 }
 
-//Entirely resets a form
+//resets the form and all the data-error linked to it
 function resetForm(form){
   form.reset();
   form.querySelectorAll("input").forEach((input)=>input.parentElement.setAttribute("data-error-visible", false));
@@ -46,13 +46,16 @@ const AGE_LIMIT = 13;
 const currentDate = new Date().toISOString().split("T")[0];
 birthdateInput.setAttribute("max", currentDate.split("-",1)-AGE_LIMIT+"-"+currentDate.substring(currentDate.indexOf('-') + 1));
 
-//events to check validity of form inputs
+//events to check validity of form inputs when their value changes
 formData.forEach((div)=>{
   const inputs = div.querySelectorAll("input");
-  inputs.forEach((input)=>input.addEventListener((input.type === "radio") ? "click" : "input", (val)=>checkInput(val.target)));
+  inputs.forEach((input)=>input.addEventListener(
+    (input.type === "radio") ? "click" : "input", 
+    (val)=>checkInput(val.target))
+    );
 });
 
-//event to submit form : check all inputs valkidity before sending
+//event to submit form : check all inputs validity before sending
 submitForm.addEventListener("click", (event)=>{
   event.preventDefault();
   let formValid = true;
